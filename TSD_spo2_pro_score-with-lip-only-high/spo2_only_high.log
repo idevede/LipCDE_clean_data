@@ -1,0 +1,38 @@
+nohup: ignoring input
+WARNING:tensorflow:From /meladyfs/newyork/defucao/NeruIPSCausal/ablation_study/TSD_spo2_pro_score-with-lip-only-high/rmsn/libs/net_helpers.py:63: The name tf.train.AdamOptimizer is deprecated. Please use tf.compat.v1.train.AdamOptimizer instead.
+
+WARNING:tensorflow:
+The TensorFlow contrib module will not be included in TensorFlow 2.0.
+For more information, please see:
+  * https://github.com/tensorflow/community/blob/master/rfcs/20180907-contrib-sunset.md
+  * https://github.com/tensorflow/addons
+  * https://github.com/tensorflow/io (for I/O related ops)
+If you depend on functionality not listed there, please file an issue.
+
+INFO:Fitting counfounded recurrent marginal structural networks.
+INFO:Fitting counfounded recurrent marginal structural networks.
+fitting propensity_networks
+INFO:Training propensity networks
+INFO:Running hyperparameter optimisation
+WARNING:tensorflow:From /meladyfs/newyork/defucao/NeruIPSCausal/ablation_study/TSD_spo2_pro_score-with-lip-only-high/rmsn/script_rnn_fit.py:263: The name tf.GPUOptions is deprecated. Please use tf.compat.v1.GPUOptions instead.
+
+WARNING:From /meladyfs/newyork/defucao/NeruIPSCausal/ablation_study/TSD_spo2_pro_score-with-lip-only-high/rmsn/script_rnn_fit.py:263: The name tf.GPUOptions is deprecated. Please use tf.compat.v1.GPUOptions instead.
+
+WARNING:tensorflow:From /meladyfs/newyork/defucao/NeruIPSCausal/ablation_study/TSD_spo2_pro_score-with-lip-only-high/rmsn/script_rnn_fit.py:264: The name tf.ConfigProto is deprecated. Please use tf.compat.v1.ConfigProto instead.
+
+WARNING:From /meladyfs/newyork/defucao/NeruIPSCausal/ablation_study/TSD_spo2_pro_score-with-lip-only-high/rmsn/script_rnn_fit.py:264: The name tf.ConfigProto is deprecated. Please use tf.compat.v1.ConfigProto instead.
+
+/home/defucao/anaconda3/envs/ode/lib/python3.6/site-packages/torch/functional.py:445: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at  ../aten/src/ATen/native/TensorShape.cpp:2157.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/meladyfs/newyork/defucao/NeruIPSCausal/ablation_study/TSD_spo2_pro_score-with-lip-only-high/rmsn/script_rnn_fit.py:413: RuntimeWarning: invalid value encountered in true_divide
+  / active_entires.sum(axis=0).sum(axis=-1)
+0:4.30227538911669
+1:4.179359000600276
+2:4.275282796544428
+3:4.247586579828074
+4:4.252715636228888
+5:4.4203490349240155
+6:4.289352198851029
+7:4.352447781145832
+8:4.376708367109347
+9:4.280286751948905

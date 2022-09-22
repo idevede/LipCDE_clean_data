@@ -1,0 +1,13 @@
+/.idea
+/rmsn2
+/results
+/results*
+/*.p
+/*.csv
+/__pycache__
+/.vscode
+/.ipynb_checkpoints
+/hdpi
+/__pycache__
+/checkpoints
+/*/__pycache__
