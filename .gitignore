@@ -17,3 +17,5 @@ __pycache__
 test_treatment*/
 syc_data/
 __pycache__
+*/results
+*/results*
