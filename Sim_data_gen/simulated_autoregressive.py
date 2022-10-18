@@ -399,4 +399,7 @@ class AutoregressiveSimulation:
 
             return dataset, dataset_cf_0, dataset_cf_1
 
-
+if __name__ == '__main__':
+    autoregressive = AutoregressiveSimulation(0.6, 5)
+    dataset, dataset_cf_0, dataset_cf_1 = autoregressive.generate_dataset(5000, 31)
+    print(dataset.shape)
