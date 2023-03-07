@@ -1,0 +1,2 @@
+model_checkpoint_path: "treatment_effects_0.1_9_100_128_0.01_2.0_60_tanh_sigmoid_final.ckpt"
+all_model_checkpoint_paths: "treatment_effects_0.1_9_100_128_0.01_2.0_60_tanh_sigmoid_final.ckpt"
