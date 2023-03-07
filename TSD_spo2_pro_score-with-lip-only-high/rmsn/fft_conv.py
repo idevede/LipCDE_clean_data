@@ -181,22 +181,27 @@ def fft_conv(
     # signal_ = signal_.reshape(signal_.size(0), groups, -1, *signal_.shape[2:])
     signal_fr = rfftn(signal_, dim=tuple(range(2, signal.ndim)))
     signal_fr_shift = fftshift(signal_fr)
+    signal_fr_shift_low = signal_fr_shift
     b, c, l = signal_fr_shift.shape
     M = c/2
     N = l/2
     d0 =5 # GLPF filter, d0=5, 15, 30 , https://www.cnblogs.com/pingwen/p/12442257.html
+
     for i in range(b):
         for j in range(c):
             for k in range(l):
                 d = math.sqrt(math.pow((j - M), 2) + math.pow((k - N), 2))
                 h = 1 - 1*math.exp(-1/2*(math.pow(d,2)/(d0*d0)))
                 signal_fr_shift[i][j,k]= h * signal_fr_shift[i][j,k]
+                signal_fr_shift_low[i][j,k]= (1-h) * signal_fr_shift[i][j,k]
     signal_fr_shift = ifftshift(signal_fr_shift)
+    signal_fr_shift_low = ifftshift(signal_fr_shift_low)
     kernel_fr = rfftn(padded_kernel, dim=tuple(range(2, signal.ndim)))
 
     kernel_fr.imag *= -1
     output_fr = complex_matmul(signal_fr_shift, kernel_fr, groups=groups)
-    output = irfftn(output_fr, dim=tuple(range(2, signal.ndim)))
+    output_fr_low = complex_matmul(signal_fr_shift_low, kernel_fr, groups=groups)
+    output = irfftn(output_fr+ output_fr_low, dim=tuple(range(2, signal.ndim)))
 
     # Remove extra padded values
     crop_slices = [slice(0, output.size(0)), slice(0, output.size(1))] + [
@@ -210,7 +215,7 @@ def fft_conv(
         bias_shape = tuple([1, -1] + (signal.ndim - 2) * [1])
         output += bias.view(bias_shape)
 
-    return output
+    return output, kernel
 
 
 
@@ -282,7 +287,8 @@ class _FFTConv(nn.Module):
         self.bias = nn.Parameter(torch.randn(out_channels)).to(device) if bias else None
 
     def forward(self, signal):
-        return fft_conv_high_pass(
+        #return fft_conv_high_pass(
+        return fft_conv(
             signal,
             self.weight,
             bias=self.bias,
